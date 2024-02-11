@@ -1,25 +1,170 @@
-/**
-  |============================
-  | include css partials with
-  | default @import url()
-  |============================
-*/
-@import url('./reset.css');
-@import url('./vite-promo.css');
-@import url('./header.css');
+/* loader */
 
-:root {
-  font-family: Inter, Avenir, Helvetica, Arial, sans-serif;
-  font-size: 16px;
-  line-height: 24px;
+.loader {
+  width: 48px;
+  height: 48px;
+  border: 2px solid #1a1717;
+  border-radius: 50%;
+  display: inline-block;
+  position: relative;
+  box-sizing: border-box;
+  animation: rotation 1s linear infinite;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  margin-top: 20px;
+}
+
+.loader::after {
+  content: '';
+  box-sizing: border-box;
+  position: absolute;
+  left: 0;
+  top: 0;
+  background: #4e75ff;
+  width: 16px;
+  height: 16px;
+  transform: translate(-50%, 50%);
+  border-radius: 50%;
+}
+
+@keyframes rotation {
+  0% {
+    transform: rotate(0deg);
+  }
+
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+/* form */
+ul {
+  padding: 0;
+}
+
+body {
+  margin: 0;
+}
+
+.search-images {
+  width: 371px;
+  height: 40px;
+  margin: auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 8px;
+  margin-top: 16px;
+}
+
+.query-images {
+  border: 1px solid #808080;
+  border-radius: 4px;
+  width: 272px;
+  height: 40px;
+  padding-left: 16px;
+  font-family: "Montserrat", sans-serif;
   font-weight: 400;
+  font-size: 16px;
+  line-height: 1.5;
+  letter-spacing: 0.04em;
+  color: #2e2f42;
+  outline: transparent;
+}
 
-  color: #242424;
-  background-color: rgba(255, 255, 255, 0.87);
+.query-images::-moz-placeholder {
+  color: #808080;
+}
 
-  font-synthesis: none;
-  text-rendering: optimizeLegibility;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  -webkit-text-size-adjust: 100%;
+.query-images:hover {
+  border: 1px solid #000;
+}
+
+.query-images:focus {
+  border: 1px solid #4e75ff;
+}
+
+.btn-search {
+  border-radius: 8px;
+  padding: 8px 16px;
+  width: 91px;
+  height: 40px;
+  border: none;
+  background: #4e75ff;
+  font-family: "Montserrat", sans-serif;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 1.5;
+  letter-spacing: 0.04em;
+  color: #fff;
+}
+
+.btn-search:hover {
+  background: #6c8cff;
+}
+
+
+
+.gallery {
+  display: flex;
+  width: auto;
+  height: auto;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  gap: 24px;
+  background-color: #FFF;
+  list-style: none;
+}
+
+.gallery-item {
+  display: block;
+  border: 1px solid black;
+}
+
+
+.gallery-link {
+  display: block;
+  text-decoration: none;
+}
+
+.gallery-image {
+  display: block;
+  width: 360px;
+  height: 200px;
+  flex-shrink: 0;
+  transition: transform 250ms linear;
+}
+
+.gallery-image:hover {
+  transform: scale(1.1);
+}
+
+h3 {
+  margin: 0;
+}
+
+p {
+  margin: 0;
+}
+
+.gallery-body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  list-style: none;
+  gap: 16px;
+}
+
+.gallery-info {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.hidden {
+  display: none;
+  opacity: 0;
 }
