@@ -18,3 +18,4 @@ export async function getGallery(queryName) {
        
     return response.data;
 }
+// fetch
