@@ -13,10 +13,8 @@ export let lightBox = new SimpleLightbox('.gallery-link', {
 
 refs.form.addEventListener('submit', onFormSubmit);
 
-function onFormSubmit(e) {
+async function onFormSubmit(e) {
   e.preventDefault();
-  
-  
 
   const query = e.target.elements.query.value.trim();
   
@@ -32,7 +30,8 @@ function onFormSubmit(e) {
   refs.galleryList.innerHTML = '';
   refs.loadElem.classList.remove('hidden');
 
-  getGallery(query).then(data => {
+  try {
+  const data = await getGallery(query);
     if (data.hits.length === 0) {
       iziToast.show({
         message: 'Sorry, there are no images matching your search query. Please, try again!',
@@ -43,11 +42,11 @@ function onFormSubmit(e) {
     } else {
       renderGallery(data);
     }
-  }).catch((error) => {
-      console.log(error);
-  }).finally(() => {
-      refs.loadElem.classList.add('hidden');
-  });
-
+  } catch (error) {
+    console.log(error);
+  }
+    
+  refs.loadElem.classList.add('hidden');
+  
   e.target.reset();
 }
