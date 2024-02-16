@@ -40,7 +40,7 @@ async function onFormSubmit(e) {
 
   try {
     const data = await getGallery();
-    totalPages = data.total;
+    totalPages = data.totalHits;
    
 
     if (data.hits.length === 0) {
@@ -95,6 +95,12 @@ function checkLastPage() {
   console.log(isLastPage);
   if (isLastPage) {
     refs.btnLoadMore.classList.add('hidden');
+    iziToast.show({
+        message: `We're sorry, but you've reached the end of search results.`,
+        messageColor: 'white',
+        backgroundColor: 'red',
+        position: 'topRight',
+      });
   } else {
     refs.btnLoadMore.classList.remove('hidden');
   }
