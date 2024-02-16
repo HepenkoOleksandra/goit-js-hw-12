@@ -42,8 +42,9 @@ async function onFormSubmit(e) {
    
     if (data.hits.length === 0) {
       checkDataHitsLength()
-      refs.btnLoadMore.classList.add('hidden');
-      
+      refs.loadElem.classList.add('hidden');
+      e.target.reset();
+      return
     } else {
       renderGallery(data);
       checkLastPage()
